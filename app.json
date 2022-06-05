@@ -9,9 +9,9 @@
     "forward",
     "bot"
   ],
-  "success_url": "https://t.me/DForDarkAngel",
-  "website": "https://github.com/Jijinr/Frwdit",
-  "repository": "https://github.com/Jijinr/Frwdit",
+  "success_url": "https://t.me/testin4you",
+  "website": "https://github.com/royak47/Frwdit",
+  "repository": "https://github.com/royak47/Frwdit",
   "env": {
     "API_ID": {
       "description": "Get this value from https://my.telegram.org or @UseTGXBot",
