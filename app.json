@@ -1,63 +1,18 @@
-{
-  "name": "Auto-Forward-Bot",
-  "description": "Telegram's Best Smart Plugin File Forward Bot",
-  "logo": "https://telegra.ph/file/8b8419bb855959c143875.jpg",
-  "keywords": [
-    "telegram",
-    "best",
-    "file",
-    "forward",
-    "bot"
-  ],
-  "success_url": "https://t.me/testin4you",
-  "website": "https://github.com/royak47/Frwdit",
-  "repository": "https://github.com/royak47/Frwdit",
-  "env": {
-    "API_ID": {
-      "description": "Get this value from https://my.telegram.org or @UseTGXBot",
-      "value": ""
-    },
-    "API_HASH": {
-      "description": "Get this value from https://my.telegram.org or @UseTGXBot",
-      "value": ""
-    },
-    "BOT_TOKEN": {
-      "description": "Your bot token from @BotFather",
-      "value": ""
-    },
-    "TO_CHANNEL": {
-      "description": "Enter Your channel Id must add Eg:- -100xxxxxxxxx",
-      "value": ""
-    },
-    "FROM_CHANNEL": {
-      "description": "enter Channel username Eg:- @abcdefghijk",
-      "value": ""
-    },
-    "OWNER_ID": {
-      "description": "Enter Your Telegram id",
-      "value": ""
-    },
-    "SKIP_NO": {
-      "description": "Enter File Skiping Number",
-      "value": "0"
-    },
-    "CAPTION": {
-      "description": "If you want to add a caption to the forwarded file, enter it here",
-      "required": false
-    },
-    "FILTER_TYPE": {
-      "description": "Type Of filters {document , audio , photo , video , animation , (empty = forward all kind of messages)}",
-      "value": "document"
-    },
-    "SESSION": {
-      "description": "Pyrogram string Seccion https://replit.com/@JijinR/PyroSessionString",
-      "value": ""
-    }
-  },
-  "formation": {
-    "worker": {
-      "quantity": 1,
-      "size": "free"
-    }
-  }
-}
+import telebot
+
+# Replace with your own bot token
+TOKEN = '5992676746:AAGnzAXjy5FgggnDTWVgNjmFaY8Sq4hxOxs'
+
+# Replace with the chat IDs of the source and target groups
+SOURCE_CHAT_ID = '1799747527'
+TARGET_CHAT_ID = '1183337698'
+
+bot = telebot.TeleBot(TOKEN)
+
+# Handler for all messages received in the source group
+@bot.message_handler(func=lambda message: message.chat.id == SOURCE_CHAT_ID)
+def forward_message(message):
+    # Forward the message to the target group
+    bot.forward_message(chat_id=TARGET_CHAT_ID, from_chat_id=message.chat.id, message_id=message.message_id)
+
+bot.polling()
